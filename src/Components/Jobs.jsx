@@ -4,50 +4,58 @@ const jobs = [
         title: "Cloud Engineer",
         location: "Hyderabad",
         level: "Intermediate Level",
+        category: "Networking",
         description: "Join our technology team as a Cloud Engineer, where you will be responsible for designing and managing our cloud infrastructure."
     },
     {
-        company: "Microsoft",
+        company: "microsoftt",
         title: "Network Security Engineer",
         location: "Bangalore",
         level: "Senior Level",
+        category: "Networking",
         description: "We are seeking a Network Security Engineer to protect our organization's IT infrastructure. You will design and implement security measures to keep systems safe."
     },
     {
-        company: "Amazon",
+        company: "amazon",
         title: "Software Tester",
         location: "Chennai",
         level: "Intermediate Level",
+        category: "Programming",
         description: "As a Software Tester, you will play a critical role in ensuring the quality and reliability of our software applications. You will design test cases."
     },
     {
-        company: "Adobe",
+        company: "adobe",
         title: "Graphic Designer",
         location: "Chennai",
         level: "Intermediate Level",
+        category: "Designing",
         description: "Join our creative team as a Graphic Designer, where you will be responsible for creating visually appealing graphics and layouts that enhance our brand."
     },
     {
-        company: "Walmart",
+        company: "walmart",
         title: "Content Marketing Manager",
         location: "Mumbai",
         level: "Senior Level",
+        category: "Designing",
         description: "We are looking for a Content Marketing Manager to lead our content strategy and execution. In this role, you will develop compelling content."
     },
     {
-        company: "Samsung",
+        company: "samsung",
         title: "Human Resources Specialist",
         location: "Washington",
         level: "Intermediate Level",
+        category: "Data Science",
         description: "As a Human Resources Specialist, you will support various HR functions, including recruitment, employee relations, and compliance."
     }
 ];
 function Jobs(){
     return (
         <>
-        {jobs.map((job)=>(
-            <Card key={jobs.title} JobObj={jobb} />
+        <div className="card-container">
+        {jobs.slice(0,6).map((job)=>(
+            <Card key={job.title} JobObj={job} />
         ))}
+        </div>
         </>
 
     )
@@ -55,15 +63,21 @@ function Jobs(){
 
 
 
-function Card(){
+function Card({JobObj}){
     return(
         <>
         <div className="card">
-       <img src="/photos/google.jpg" alt="" className="cardPhoto"/>
-       <p className="titlo">Cloud Engineer</p>
+       <img src={`/photos/${JobObj.company}.png`} alt="" className="cardPhoto" />
+       <p className="titlo">{JobObj.title}</p>
        <div className="info">
-        <p className="hi-lol">Programming</p>
+        <p className="hi-lol">{JobObj.category}</p>
+        <p className="hi-bye">{JobObj.level}</p>
+
+
         
+        </div>
+        <div className="para">
+          <p>{JobObj.description}</p>  
         </div>
        </div>
        </>

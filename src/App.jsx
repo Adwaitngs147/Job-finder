@@ -3,7 +3,8 @@ import Body from "./Components/Body"
 import TrustedBy from "./Components/TrustedBy"
 import Sorted from "./Components/Sorted"
 import Main from "./Components/Main"
-import Card from "./Components/Card"
+
+import Jobs from "./Components/Jobs"
 function App() {
   
 
@@ -14,10 +15,14 @@ function App() {
     <TrustedBy />
     <div className="jobs">
     <Sorted />
+    <div className="main-content">
     <Main />
-  
-    </div>
+    <Jobs />
     
+    </div>
+    </div>
+   
+  
    </div>
   )
 }
