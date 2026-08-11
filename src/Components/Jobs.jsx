@@ -1,3 +1,5 @@
+import { useState } from "react";
+import Sorted from "./Sorted";
 const jobs = [
     {
         company: "Google",
@@ -5,7 +7,8 @@ const jobs = [
         location: "Hyderabad",
         level: "Intermediate Level",
         category: "Networking",
-        description: "Join our technology team as a Cloud Engineer, where you will be responsible for designing and managing our cloud infrastructure."
+        description: "Join our technology team as a Cloud Engineer, where you will be responsible for designing and managing our cloud infrastructure.",
+       
     },
     {
         company: "microsoftt",
@@ -13,7 +16,8 @@ const jobs = [
         location: "Bangalore",
         level: "Senior Level",
         category: "Networking",
-        description: "We are seeking a Network Security Engineer to protect our organization's IT infrastructure. You will design and implement security measures to keep systems safe."
+        description: "We are seeking a Network Security Engineer to protect our organization's IT infrastructure. You will design and implement security measures to keep systems safe.",
+        
     },
     {
         company: "amazon",
@@ -21,7 +25,8 @@ const jobs = [
         location: "Chennai",
         level: "Intermediate Level",
         category: "Programming",
-        description: "As a Software Tester, you will play a critical role in ensuring the quality and reliability of our software applications. You will design test cases."
+        description: "As a Software Tester, you will play a critical role in ensuring the quality and reliability of our software applications. You will design test cases.",
+        
     },
     {
         company: "adobe",
@@ -29,7 +34,8 @@ const jobs = [
         location: "Chennai",
         level: "Intermediate Level",
         category: "Designing",
-        description: "Join our creative team as a Graphic Designer, where you will be responsible for creating visually appealing graphics and layouts that enhance our brand."
+        description: "Join our creative team as a Graphic Designer, where you will be responsible for creating visually appealing graphics and layouts that enhance our brand.",
+         
     },
     {
         company: "walmart",
@@ -37,7 +43,8 @@ const jobs = [
         location: "Mumbai",
         level: "Senior Level",
         category: "Designing",
-        description: "We are looking for a Content Marketing Manager to lead our content strategy and execution. In this role, you will develop compelling content."
+        description: "We are looking for a Content Marketing Manager to lead our content strategy and execution. In this role, you will develop compelling content.",
+       
     },
     {
         company: "samsung",
@@ -45,15 +52,18 @@ const jobs = [
         location: "Washington",
         level: "Intermediate Level",
         category: "Data Science",
-        description: "As a Human Resources Specialist, you will support various HR functions, including recruitment, employee relations, and compliance."
+        description: "As a Human Resources Specialist, you will support various HR functions, including recruitment, employee relations, and compliance.",
+      
     }
 ];
-function Jobs(){
+
+function Jobs({isChoosen,setisChoosen}){
     return (
         <>
         <div className="card-container">
-        {jobs.slice(0,6).map((job)=>(
-            <Card key={job.title} JobObj={job} />
+        {jobs.map((job)=>(
+            <Card key={job.title} JobObj={job} 
+            isChoosen={isChoosen} setisChoosen={setisChoosen}/>
         ))}
         </div>
         </>
@@ -63,11 +73,17 @@ function Jobs(){
 
 
 
-function Card({JobObj}){
+function Card({JobObj,isChoosen,setisChoosen}){
+      if (isChoosen !== null && JobObj.category !== isChoosen) {
+        return null;
+    }
+        
+   
     return(
+      
         <>
         <div className="card">
-       <img src={`/photos/${JobObj.company}.png`} alt="" className="cardPhoto" />
+       <img src="/photos/adobe.png" alt="" className="cardPhoto" />
        <p className="titlo">{JobObj.title}</p>
        <div className="info">
         <p className="hi-lol">{JobObj.category}</p>
@@ -79,8 +95,17 @@ function Card({JobObj}){
         <div className="para">
           <p>{JobObj.description}</p>  
         </div>
+        <div className="btn-head">
+            <button className="apply">Apply Now</button>
+             <button className="learn">Learn More</button>
+        </div>
        </div>
        </>
     )
+
+
 }
+
+
+
 export default Jobs;
